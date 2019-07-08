@@ -1,0 +1,26 @@
+service: serverless-websockets
+
+frameworkVersion: ">=1.1.0 <2.0.0"
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  websocketsApiName: websockets-test-api
+  websocketsApiRouteSelectionExpression: $request.body.action
+functions:
+  connectionHandler:
+    handler: handler.openConnection
+    events:
+      - websocket:
+        route: $connect
+      - websocket:
+        route: $disconnect
+
+  defaultHandler:
+    handler: handler.defaultHandler
+    events:
+      - websocket:
+        route: $default
