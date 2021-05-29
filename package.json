@@ -23,6 +23,6 @@
   },
   "devDependencies": {
     "serverless-offline": "^5.7.2",
-    "ws": "^7.1.0"
+    "ws": "^7.4.6"
   }
 }
